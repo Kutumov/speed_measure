@@ -13,3 +13,6 @@ target_sources(${PROJECT_NAME} PUBLIC
     Test.cpp
     ./include/TestsHandler.h
     ./include/Test.h)
+
+
+message(STATUS ${CMAKE_CURRENT_BINARY_DIR})

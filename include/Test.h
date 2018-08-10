@@ -12,12 +12,12 @@
 class SpeedTest
 {
 public:
-    SpeedTest(const std::string& name, const std::string ver): name(name), ver(ver)
+    SpeedTest(const std::string& name, const std::string& realization, const std::string ver): name(name), ver(ver), realization(realization)
     {}
 
     template<typename Pref, typename F, typename... Args>
     Pref
-    measure(int inputWeight, F&& code, Args&&... args)
+    measure(int64_t inputWeight, F&& code, Args&&... args)
     {
         using namespace std;
         using namespace std::chrono;
@@ -29,7 +29,7 @@ public:
 
         auto outDur = duration_cast<Pref>(dur);
 
-        std::cout<<"Execution duration "<<outDur.count()<<std::endl;
+        std::cout<<"Duration of "<<name<<"/"<<realization<<" ver."<<ver<<" "<<outDur.count()<<std::endl;
 
         if(file.is_open() == false)
         {
@@ -48,6 +48,7 @@ private:
 
     std::fstream file;
     std::string name;
+    std::string realization;
     std::string ver;
 
 };
